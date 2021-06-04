@@ -8,9 +8,12 @@
 
 
 #include <ald_cmu.h> 
+#include "board.h"
 
 
 /* 时钟树 配置 */
+
+#if  ( defined(CHIP_NAME_ES32F3696LT) || defined(CHIP_NAME_ES32F3696LX) )
 
 #define   ES_C_MUL_9          CMU_PLL1_OUTPUT_36M
 #define   ES_C_MUL_12         CMU_PLL1_OUTPUT_48M
@@ -40,34 +43,35 @@
 #define  ES_C_HRC_DIV_6         CMU_PLL1_INPUT_HRC_6
 
 
-#define   ES_CMU_LRC_EN            ES_C_ENABLE
-#define   ES_CMU_LOSC_EN           ES_C_DISABLE 
-#define   ES_CMU_HRC_EN            ES_C_ENABLE 
-#define   ES_CMU_HOSC_EN           ES_C_ENABLE
-#define   ES_CMU_PLL1_EN           ES_C_ENABLE
 
 
 
+#define   ES_PLL1_REFER_CLK           ES_C_HOSC_DIV_3
+#define   ES_PLL1_OUT_CLK             ES_C_MUL_18
+#define   ES_CMU_PLL1_EN              ES_C_ENABLE
+#define   ES_CMU_PLL1_SAFE_EN         ES_C_DISABLE
+#define   ES_CMU_LOSC_EN              ES_C_ENABLE
+#define   ES_CMU_LRC_EN               ES_C_ENABLE
+#define   ES_CMU_HOSC_EN              ES_C_ENABLE
+#define   ES_CMU_HRC_EN               ES_C_ENABLE
+#define   ES_CMU_SYS_DIV              ES_C_DIV_1
+#define   ES_CMU_HCLK_1_DIV           ES_C_DIV_2
+#define   ES_CMU_HCLK_2_DIV           ES_C_DIV_2
+#define   ES_CMU_PCLK_1_DIV           ES_C_DIV_2
+#define   ES_CMU_PCLK_2_DIV           ES_C_DIV_4
+#define   ES_SYS_CLK_SOURSE           CMU_CLOCK_PLL1
+#define   ES_PLL_CLK                  72000000
+#define   ES_SYS_SOURCE_CLK           72000000
+#define   ES_SYS_CLK                  72000000
+#define   ES_PCLK1_CLK                36000000
+#define   ES_PCLK2_CLK                18000000
+#define   ES_HCLK1_CLK                36000000
+#define   ES_HCLK2_CLK                36000000
+#define   ES_CMU_EXTERN_CLK_LOSC      32768
+#define   ES_CMU_EXTERN_CLK_HOSC      12000000
 
-#define   ES_CMU_PLL1_SAFE_EN      ES_C_DISABLE
 
-#define   ES_CMU_OUT_CLK_HOSC      12000000 
-#define   ES_CMU_OUT_CLK_LOSC      32768 
-
-#define   ES_PLL1_REFER_CLK        ES_C_HOSC_DIV_3
-#define   ES_PLL1_OUT_CLK          ES_C_MUL_24
-
-#define   ES_CMU_HCLK_1_DIV        ES_C_DIV_2
-#define   ES_CMU_HCLK_2_DIV        ES_C_DIV_2
-#define   ES_CMU_PCLK_1_DIV        ES_C_DIV_2
-#define   ES_CMU_PCLK_2_DIV        ES_C_DIV_4
-#define   ES_CMU_SYS_DIV           ES_C_DIV_1
-
-                                    
-#define   ES_SYS_CLK_SOURSE        CMU_CLOCK_PLL1
-#define   ES_SYS_CLK               96000000
-             
-
+#endif
 
 
 #endif

@@ -24,6 +24,7 @@
 #include "board.h"
 #include "drv_uart.h"
 #include <ald_cmu.h>
+#include "es_conf_info_cmu.h"
 
 #ifdef RT_USING_FINSH
 #include <finsh.h>
@@ -49,6 +50,7 @@ void NVIC_Configuration(void)
  *******************************************************************************/
 void  SystemClock_Config(char* clock_src,int32_t clock_src_freq,int32_t clock_target_freq )
 {   
+#if  ( defined(CHIP_NAME_ES32F3696LT) || defined(CHIP_NAME_ES32F3696LX) )
 	SYSCFG_UNLOCK();
 #if  ES_CMU_LRC_EN   
     SET_BIT(CMU->CLKENR, CMU_CLKENR_LRCEN_MSK);
@@ -100,6 +102,17 @@ void  SystemClock_Config(char* clock_src,int32_t clock_src_freq,int32_t clock_ta
     
     ald_cmu_perh_clock_config(CMU_PERH_ALL, ENABLE);
     
+    
+/*低功耗时钟使能*/    
+#ifdef RT_USING_PM
+        SYSCFG_UNLOCK();
+        SET_BIT(CMU->LPENR, CMU_LPENR_LRCEN_MSK);
+        SET_BIT(CMU->LPENR, CMU_LPENR_LOSCEN_MSK);
+        SET_BIT(CMU->LPENR, CMU_LPENR_HRCEN_MSK);
+        SET_BIT(CMU->LPENR, CMU_LPENR_HOSCEN_MSK);
+        SYSCFG_LOCK();
+#endif
+#endif
 }
 
 /*******************************************************************************
@@ -123,6 +136,7 @@ void SysTick_Handler(void)
 {
     /* enter interrupt */
     rt_interrupt_enter();
+    ald_inc_tick();
     rt_tick_increase();
     /* leave interrupt */
     rt_interrupt_leave();

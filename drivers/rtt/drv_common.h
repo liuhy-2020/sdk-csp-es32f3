@@ -23,7 +23,6 @@
 #ifndef __DRV_COMMON_H__
 #define __DRV_COMMON_H__
 
-#include "es_conf_info_cmu.h"
 
 #ifdef ES32F36xx
 #include <es32f36xx.h>

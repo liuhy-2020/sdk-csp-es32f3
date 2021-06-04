@@ -1,5 +1,23 @@
 /*
- * Copyright (C) 2021 Shanghai Eastsoft Microelectronics Co., Ltd.
+ *  Change Logs:
+ *  Date            Author          Notes
+ *  2021-04-20      liuhy          the first version
+ *
+ * Copyright (C) 2021 Shanghai Eastsoft Microelectronics Co., Ltd. All rights reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the License); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  *
  */
 
@@ -18,13 +36,19 @@
 #define ES_C_I2C_NO_GENERALCALL          I2C_GENERALCALL_DISABLE
 
  
-#define ES_I2C_ADDR_7_MODE                I2C_ADDR_7BIT   
-#define ES_I2C_ADDR_10_MODE                I2C_ADDR_10BIT
+#define ES_C_I2C_ADDR_7_MODE                I2C_ADDR_7BIT   
+#define ES_C_I2C_ADDR_10_MODE                I2C_ADDR_10BIT
 
 
 /* I2C 配置 */
 
+              
+
 /* codes_main */
+
+   
+   
+   
 
 #ifndef  ES_DEVICE_NAME_I2C0
 #define  ES_DEVICE_NAME_I2C0     "i2c0"
@@ -47,7 +71,7 @@
 #define ES_I2C0_STRETCH               ES_C_I2C_STRETCH
 #endif
 #ifndef ES_I2C0_ADDR_MODE                                            
-#define ES_I2C0_ADDR_MODE                ES_I2C_ADDR_7_MODE 
+#define ES_I2C0_ADDR_MODE                ES_C_I2C_ADDR_7_MODE 
 #endif
 
 #ifndef  ES_I2C1_CLK_SPEED
@@ -63,7 +87,7 @@
 #define ES_I2C1_STRETCH               ES_C_I2C_STRETCH
 #endif 
 #ifndef ES_I2C1_ADDR_MODE                                            
-#define ES_I2C1_ADDR_MODE                ES_I2C_ADDR_7_MODE 
+#define ES_I2C1_ADDR_MODE                ES_C_I2C_ADDR_7_MODE 
 #endif
 
                                                  

@@ -25,6 +25,7 @@
 #define DRV_HWTIMER_H__
 
 #include "es_conf_info_hwtimer.h"
+#include "es_conf_info_cmu.h"
 int rt_hw_hwtimer_init(void);
 
 #endif

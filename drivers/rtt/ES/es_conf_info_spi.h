@@ -1,5 +1,23 @@
 /*
- * Copyright (C) 2021 Shanghai Eastsoft Microelectronics Co., Ltd.
+ *  Change Logs:
+ *  Date            Author          Notes
+ *  2021-04-20      liuhy          the first version
+ *
+ * Copyright (C) 2021 Shanghai Eastsoft Microelectronics Co., Ltd. All rights reserved.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the License); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an AS IS BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  *
  */
 
@@ -24,23 +42,30 @@
                                             _CONF_.max_hz = ES_SPI##_I_##_MAX_HZ;                     \
                                             }while(0)
 
-
+                                            
+//    spi_config.mode &= ~RT_SPI_SLAVE; /* 主机模式 */
+//    spi_config.mode &= ~RT_SPI_3WIRE; /* 4线，双向传输 */
+//    spi_config.mode |= RT_SPI_CPHA;   /* 第二边沿采样 */
+//    spi_config.mode |= RT_SPI_CPOL;   /* 空闲高电平 */
+//    spi_config.mode |= RT_SPI_NO_CS;  /* 禁用软件从机选择管理 */
+//    spi_config.mode |= RT_SPI_MSB;    /* 高位在前 */
+//    spi_config.data_width = 8;        /* 数据长度：8 */
+//    spi_config.max_hz = 2000000;      /* 最快时钟频率 */
 
 #define ES_C_SPI_CLK_POL_HIGH            RT_SPI_CPOL  
 #define ES_C_SPI_CLK_POL_LOW             !RT_SPI_CPOL    
-
-#define ES_C_SPI_CLK_PHA_FIRST            !RT_SPI_CPHA
+                                            
+#define ES_C_SPI_CLK_PHA_FIRST            !RT_SPI_CPHA  
 #define ES_C_SPI_CLK_PHA_SECOND           RT_SPI_CPHA
-
-#define ES_C_SPI_MSB                      RT_SPI_MSB
-#define ES_C_SPI_LSB                      RT_SPI_LSB
+                                            
+#define ES_C_SPI_MSB                      RT_SPI_MSB     
+#define ES_C_SPI_LSB                      RT_SPI_LSB                      
 
 #define ES_C_SPI_CS_LOW_LEVEL             0
 #define ES_C_SPI_CS_HIGH_LEVEL            1
 
-
-
 /* codes_main */
+
 
 #ifndef  ES_DEVICE_NAME_SPI0_BUS
 #define  ES_DEVICE_NAME_SPI0_BUS     "spi0"
@@ -64,7 +89,6 @@
 #endif    
 
 
-
 #define ES_SPI_CS_LEVEL               ES_C_SPI_CS_LOW_LEVEL
 
 #ifndef   ES_SPI0_CPHA_1_2      
@@ -80,7 +104,7 @@
 #define   ES_SPI0_MAX_HZ                 2000000
 #endif  
 #ifndef   ES_SPI0_NSS_PIN
-#define   ES_SPI0_NSS_PIN                0xFFFFFFFF
+#define ES_SPI0_NSS_PIN 0xFFFFFFFF
 #endif     
                                                                       
 #ifndef   ES_SPI1_CPHA_1_2      
@@ -96,7 +120,7 @@
 #define   ES_SPI1_MAX_HZ                 2000000
 #endif  
 #ifndef   ES_SPI1_NSS_PIN
-#define   ES_SPI1_NSS_PIN                0xFFFFFFFF
+#define ES_SPI1_NSS_PIN 0xFFFFFFFF
 #endif     
                                                               
 #ifndef   ES_SPI2_CPHA_1_2      

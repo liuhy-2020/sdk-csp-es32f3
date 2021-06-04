@@ -26,6 +26,7 @@
 #include "drv_gpio.h"
 #include <ald_cmu.h>
 #include <ald_gpio.h>
+#include "es_conf_info_cmu.h"
 
 #ifdef RT_USING_FINSH
 #include <finsh.h>
@@ -51,6 +52,7 @@ void NVIC_Configuration(void)
  *******************************************************************************/
 void  SystemClock_Config(char* clock_src,int32_t clock_src_freq,int32_t clock_target_freq )
 {   
+#if  ( defined(CHIP_NAME_ES32F3696LT) || defined(CHIP_NAME_ES32F3696LX) )
 	SYSCFG_UNLOCK();
 #if  ES_CMU_LRC_EN   
     SET_BIT(CMU->CLKENR, CMU_CLKENR_LRCEN_MSK);
@@ -110,6 +112,7 @@ void  SystemClock_Config(char* clock_src,int32_t clock_src_freq,int32_t clock_ta
         SET_BIT(CMU->LPENR, CMU_LPENR_HRCEN_MSK);
         SET_BIT(CMU->LPENR, CMU_LPENR_HOSCEN_MSK);
         SYSCFG_LOCK();
+#endif
 #endif
 }
 

@@ -25,7 +25,6 @@
 
 #include <rtthread.h>
 #include <rthw.h>
-#include "es_conf_info_cmu.h"
 
 
 #ifdef ES32F36xx
