@@ -27,6 +27,7 @@
 #include <board.h>
 #include <rtdevice.h>
 #include <rtthread.h>
+#include <ald_cmu.h>
 #include "es_conf_info_can.h"
 
 #ifdef RT_USING_CAN

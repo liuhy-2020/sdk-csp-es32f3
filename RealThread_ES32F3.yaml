@@ -1,8 +1,8 @@
 ---
 vendor: RealThread
-dvendor: Essemi
+dvendor: essemi
 name: ES32F3
-version: 0.0.1
+version: 0.0.2
 yaml_version: 1
 type: Chip_Support_Packages
 family_name: ES32
