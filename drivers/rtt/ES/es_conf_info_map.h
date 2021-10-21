@@ -22,7 +22,7 @@ struct pin_index
 };
 
 
-#ifdef  CHIP_NAME_ES32F3696LT
+#if defined(CHIP_NAME_ES32F3696LT)|| defined(CHIP_NAME_ES32F3656LT)
 
 static const struct pin_index pins[] =
 {
@@ -146,7 +146,7 @@ static const struct pin_index pins[] =
 
 #endif
 
-#ifdef CHIP_NAME_ES32F3696LX
+#if defined(CHIP_NAME_ES32F3696LX)|| defined(CHIP_NAME_ES32F3656LX)
 
 static const struct pin_index pins[] =
 {
@@ -342,7 +342,8 @@ static const struct pin_index pins[] =
 
 #endif
 
-#if  ( defined(CHIP_NAME_ES32F3696LT) || defined(CHIP_NAME_ES32F3696LX) )
+#if  ( defined(CHIP_NAME_ES32F3656LT) || defined(CHIP_NAME_ES32F3656LX) ||\
+       defined(CHIP_NAME_ES32F3696LX) || defined(CHIP_NAME_ES32F3696LX) )
 
 #define ES_GPIO_ADC_CH0_GPIO     GPIOC
 #define ES_GPIO_ADC_CH1_GPIO     GPIOC

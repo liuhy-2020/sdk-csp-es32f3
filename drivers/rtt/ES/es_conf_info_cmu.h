@@ -13,8 +13,6 @@
 
 /* 时钟树 配置 */
 
-#if  ( defined(CHIP_NAME_ES32F3696LT) || defined(CHIP_NAME_ES32F3696LX) )
-
 #define   ES_C_MUL_9          CMU_PLL1_OUTPUT_36M
 #define   ES_C_MUL_12         CMU_PLL1_OUTPUT_48M
 #define   ES_C_MUL_18         CMU_PLL1_OUTPUT_72M
@@ -70,8 +68,6 @@
 #define   ES_CMU_EXTERN_CLK_LOSC      32768
 #define   ES_CMU_EXTERN_CLK_HOSC      12000000
 
-
-#endif
 
 
 #endif

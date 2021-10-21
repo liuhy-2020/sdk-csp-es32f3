@@ -1,12 +1,12 @@
 /*
- * linker script for ES32F3696LT with GNU ld                      es32f36xx   only change   first 9 line
+ * linker script for ES32F3696LX with GNU ld                      es32f36xx   only change   first 9 line
  */
 
 /* Program Entry, set to mark it as "used" and avoid gc */
 MEMORY
 {
     ROM (rx) : ORIGIN = 0x00000000, LENGTH =  512k /* 256K flash */
-    RAM (rw) : ORIGIN = 0x20000000, LENGTH =  96k /* 32K sram */
+    RAM (rw) : ORIGIN = 0x20000000, LENGTH =  64k /* 32K sram */
 }
 ENTRY(Reset_Handler)
 _system_stack_size = 0x400;

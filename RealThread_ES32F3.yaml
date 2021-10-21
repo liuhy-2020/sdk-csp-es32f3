@@ -154,6 +154,146 @@ series:
         - ES32F36xx
         source_files:
         - drivers\rtt
+  - sub_series_name: ES32F365X
+    chips:
+    - chip_name: ES32F3656LT
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x00000000'
+        size: '0x00080000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00010000'
+        init: '0'
+        default: '1'
+      cpu_info:
+        max_clock: '96000000'
+        fpu: '0'
+        mpu: '0'
+        endian: Little-endian
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\ES32F3656LT\link.lds
+          marco: 
+          - ES32F3656LT
+          - ES32F36xx
+          files: 
+          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Include\es32f36xx.h
+          - libraries\CMSIS\Include
+          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Startup\gcc\startup_es32f36xx.S
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: ES32F3656LX
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x00000000'
+        size: '0x00080000'
+        default: '1'
+      - id: IRAM1
+        start: '0x20000000'
+        size: '0x00010000'
+        init: '0'
+        default: '1'
+      cpu_info:
+        max_clock: '96000000'
+        fpu: '0'
+        mpu: '0'
+        endian: Little-endian
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\ES32F3656LX\link.lds
+          marco: 
+          - ES32F3656LX
+          - ES32F36xx
+          files: 
+          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Include\es32f36xx.h
+          - libraries\CMSIS\Include
+          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Startup\gcc\startup_es32f36xx.S
+          - libraries\CMSIS\Lib\GCC
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    ui:
+      uart:
+        default_value: UART3
+        prompt_message_en: select one uart as console output interface
+        prompt_message_zh: 选择一个串口作为控制台信息输出接口
+      tx_pin:
+        default_value: PC4
+        prompt_message_en: 'set the tx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]",eg. PA9,PB6 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称, 名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9,
+          PB6
+      rx_pin:
+        default_value: PC5
+        prompt_message_en: 'set the rx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]", eg. PA10, PB7 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称，名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB6
+    docs:
+    - file: 0.0.1\documents\ES32F36xx_Reference_Manual_C V1.2.pdf
+      title: ES32F36XX Reference Manual
+    svd:
+      file: debug\svd\es32f36xx.svd
+    project_type:
+      bare_metal:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          sysTick: none
+        marco:
+        - SOC_FAMILY_ES
+        - SOC_SERIES_ES32F3
+        - ES32F36xx
+        source_files:
+        - drivers\baremetal
+      rtt_nano:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          getc: none
+          sysTick: none
+          heap_init: none
+        marco:
+        - SOC_FAMILY_ES
+        - SOC_SERIES_ES32F3
+        - ES32F36xx
+        source_files:
+        - drivers\nano
+      rtt:
+        function_map:
+          rt_hw_board_init;: none
+          rt_hw_serial_register: none
+          rt_hw_pin_register: none
+          heap_init: none
+        marco:
+        - SOC_FAMILY_ES
+        - SOC_SERIES_ES32F3
+        - ES32F36xx
+        source_files:
+        - drivers\rtt
   docs:
   - file: Documents\dui0552a_cortex_m3_dgug.pdf
     title: Cortex-M3 Generic User Guide

@@ -17,15 +17,18 @@
  *
  * Change Logs:
  * Date           Author        Notes  
- * 2021-04-20     liuhy         the first version
+ * 2021-04-20     liuhy         the first versio
+ * 2021-09-17     shiwa         add dma init
  */
 
 #include "drv_common.h"
 #include "board.h"
 #include "drv_uart.h"
 #include "drv_gpio.h"
+#include "es_conf_info_dma.h"
 #include <ald_cmu.h>
 #include <ald_gpio.h>
+#include "ald_dma.h"
 #include "es_conf_info_cmu.h"
 
 #ifdef RT_USING_FINSH
@@ -52,7 +55,6 @@ void NVIC_Configuration(void)
  *******************************************************************************/
 void  SystemClock_Config(char* clock_src,int32_t clock_src_freq,int32_t clock_target_freq )
 {   
-#if  ( defined(CHIP_NAME_ES32F3696LT) || defined(CHIP_NAME_ES32F3696LX) )
 	SYSCFG_UNLOCK();
 #if  ES_CMU_LRC_EN   
     SET_BIT(CMU->CLKENR, CMU_CLKENR_LRCEN_MSK);
@@ -113,7 +115,6 @@ void  SystemClock_Config(char* clock_src,int32_t clock_src_freq,int32_t clock_ta
         SET_BIT(CMU->LPENR, CMU_LPENR_HOSCEN_MSK);
         SYSCFG_LOCK();
 #endif
-#endif
 }
 
 /*******************************************************************************
@@ -153,7 +154,18 @@ void CMU_Handler(void)
 {
     ald_cmu_irq_handler();
 }
-
+/**
+ * This is the DMA interrupt service.
+ *
+ */
+void DMA_Handler(void)
+{   
+    /* enter interrupt */
+    rt_interrupt_enter();
+    ald_dma_irq_handler();
+    /* leave interrupt */
+    rt_interrupt_leave();
+}
 /*@}*/
 /**
  * This function will initial ES32F3 board.
@@ -175,6 +187,11 @@ void hw_board_init(char *clock_src, int32_t clock_src_freq, int32_t clock_target
 #ifdef RT_USING_SERIAL
     extern int rt_hw_uart_init(void);
     rt_hw_uart_init();
+#endif
+
+#ifdef ES_CONF_DMA_ENABLE
+    ald_cmu_perh_clock_config(CMU_PERH_DMA, ENABLE);
+    ald_dma_init(DMA0);
 #endif
 }
 
