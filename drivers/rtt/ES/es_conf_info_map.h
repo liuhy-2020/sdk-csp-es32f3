@@ -343,7 +343,7 @@ static const struct pin_index pins[] =
 #endif
 
 #if  ( defined(CHIP_NAME_ES32F3656LT) || defined(CHIP_NAME_ES32F3656LX) ||\
-       defined(CHIP_NAME_ES32F3696LX) || defined(CHIP_NAME_ES32F3696LX) )
+       defined(CHIP_NAME_ES32F3696LT) || defined(CHIP_NAME_ES32F3696LX) )
 
 #define ES_GPIO_ADC_CH0_GPIO     GPIOC
 #define ES_GPIO_ADC_CH1_GPIO     GPIOC

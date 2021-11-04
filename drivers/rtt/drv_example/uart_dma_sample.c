@@ -34,8 +34,8 @@ static rt_err_t duart_input(rt_device_t dev, rt_size_t size)
 static void dserial_thread_entry(void *parameter)
 {
     char buf[17];
-    uint32_t len;
-    uint32_t i;
+    rt_uint32_t len;
+    rt_uint32_t i;
     while (1)
     {
         /* 从串口读取一个字节的数据，没有读取到则等待接收信号量 */
@@ -101,7 +101,7 @@ static int duart(int argc, char *argv[])
     {
         rt_kprintf("error open serial\n");
         rt_device_close(dserial);
-        dserial = NULL;
+        dserial = RT_NULL;
         return -1;
     }
     
