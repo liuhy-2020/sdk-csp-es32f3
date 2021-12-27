@@ -672,6 +672,7 @@ static rt_err_t es32f3x_control(struct rt_serial_device *serial, int cmd, void *
             break;
 #endif
 
+#ifdef RT_DEVICE_CTRL_CLOSE            
         case RT_DEVICE_CTRL_CLOSE:
             while (ald_uart_get_status(&uart->huart, (UART_STATUS_TSBUSY)));
 
@@ -683,6 +684,7 @@ static rt_err_t es32f3x_control(struct rt_serial_device *serial, int cmd, void *
 #endif
             ald_uart_reset(&uart->huart);
             break;
+#endif
     }
 
     return RT_EOK;
