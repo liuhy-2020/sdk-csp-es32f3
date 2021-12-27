@@ -20,6 +20,8 @@
  * 2021-04-20     liuhy         the first version
  */
 
+#include <rtthread.h>
+#include <rthw.h>
 #include "drv_common.h"
 #include "board.h"
 #include "drv_uart.h"
@@ -102,7 +104,7 @@ void  SystemClock_Config(char* clock_src,int32_t clock_src_freq,int32_t clock_ta
     ald_cmu_perh_clock_config(CMU_PERH_ALL, ENABLE);
     
     
-/*低功耗时钟使能*/    
+/*低功耗时钟使能*/
 #ifdef RT_USING_PM
         SYSCFG_UNLOCK();
         SET_BIT(CMU->LPENR, CMU_LPENR_LRCEN_MSK);

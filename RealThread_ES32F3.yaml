@@ -1,8 +1,8 @@
 ---
-vendor: RealThread
+vendor: essemi
 dvendor: essemi
 name: ES32F3
-version: 1.0.3
+version: 1.0.4
 yaml_version: 1
 type: Chip_Support_Packages
 family_name: ES32
@@ -41,10 +41,7 @@ series:
           - ES32F3696LT
           - ES32F36xx
           files: 
-          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Include\es32f36xx.h
-          - libraries\CMSIS\Include
-          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Startup\gcc\startup_es32f36xx.S
-          - libraries\CMSIS\Lib\GCC
+          - ES\ES32F3696LT
         armcc:
           entry_point: none
           link_script: none
@@ -79,11 +76,8 @@ series:
           marco: 
           - ES32F3696LX
           - ES32F36xx
-          files: 
-          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Include\es32f36xx.h
-          - libraries\CMSIS\Include
-          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Startup\gcc\startup_es32f36xx.S
-          - libraries\CMSIS\Lib\GCC
+          files:
+          - ES\ES32F3696LX
         armcc:
           entry_point: none
           link_script: none
@@ -111,7 +105,7 @@ series:
           value should be with a format"P+[port name][pin number]", eg. PA10, PB7 '
         prompt_message_zh: 设置控制台设备的数据发送引脚的名称，名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB6
     docs:
-    - file: 0.0.1\documents\ES32F36xx_Reference_Manual_C V1.2.pdf
+    - file: documents\ES32F36xx_Reference_Manual_C V1.2.pdf
       title: ES32F36XX Reference Manual
     svd:
       file: debug\svd\es32f36xx.svd
@@ -181,10 +175,7 @@ series:
           - ES32F3656LT
           - ES32F36xx
           files: 
-          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Include\es32f36xx.h
-          - libraries\CMSIS\Include
-          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Startup\gcc\startup_es32f36xx.S
-          - libraries\CMSIS\Lib\GCC
+          - ES\ES32F3656LT
         armcc:
           entry_point: none
           link_script: none
@@ -220,10 +211,7 @@ series:
           - ES32F3656LX
           - ES32F36xx
           files: 
-          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Include\es32f36xx.h
-          - libraries\CMSIS\Include
-          - libraries\CMSIS\Device\EastSoft\ES32F36xx\Startup\gcc\startup_es32f36xx.S
-          - libraries\CMSIS\Lib\GCC
+          - ES\ES32F3656LX
         armcc:
           entry_point: none
           link_script: none
@@ -251,7 +239,7 @@ series:
           value should be with a format"P+[port name][pin number]", eg. PA10, PB7 '
         prompt_message_zh: 设置控制台设备的数据发送引脚的名称，名称应该具有以下格式“P+[端口名称][端口编号]”, 比如：PA9, PB6
     docs:
-    - file: 0.0.1\documents\ES32F36xx_Reference_Manual_C V1.2.pdf
+    - file: documents\ES32F36xx_Reference_Manual_C V1.2.pdf
       title: ES32F36XX Reference Manual
     svd:
       file: debug\svd\es32f36xx.svd
@@ -304,6 +292,7 @@ series:
     - libraries\CMSIS\Include
     - libraries\CMSIS\Device\EastSoft\ES32F36xx\Include\es32f36xx.h
     - libraries\CMSIS\Device\EastSoft\ES32F36xx\System\system_es32f36xx.c
+    - libraries\CMSIS\Device\EastSoft\ES32F36xx\Startup\gcc\startup_es32f36xx.S
   cpu_info:
     core: Cortex-M3
   ui:
